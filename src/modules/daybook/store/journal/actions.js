@@ -1,7 +1,7 @@
 import journalApi from "@/api/journalApi";
 
 export const loadEntries = async ({commit}) => {
-    const {data} = await journalApi.get('/entries.json')
+    const {data} = await journalApi.get('/entries.json') //Firebase
     if(!data) {
         commit('setEntries', [])
         return
