@@ -31,7 +31,7 @@
     </div>
   </template>
 
-  <img v-if="entry.picture && !localImage"
+  <img v-if="entry && !localImage"
        :src="entry.picture"
        class="img-thumbnail"
        alt="entry-picture">
@@ -135,7 +135,7 @@ export default {
         text: 'Esta accion no se puede revertir'
       })
       if (isConfirmed) {
-        new Swal({
+        Swal.fire({
           title: 'Espere por favor',
           allowOutsideClick: false
         })

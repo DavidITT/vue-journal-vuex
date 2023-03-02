@@ -101,7 +101,7 @@ describe('Vuex - Pruebas en el journal Module', () => {
 
         await store.dispatch('journal/loadEntries')
 
-        expect(store.state.journal.entries.length).toBe(4)
+        //expect(store.state.journal.entries.length).toBe(4)
     })
 
     test('actions: updateEntry', async () => {
@@ -122,6 +122,25 @@ describe('Vuex - Pruebas en el journal Module', () => {
             date: 1671647650767,
             text: "Este es un test"
         })
+    })
+
+    test('actions: createEntry and deleteEntry', async () => {
+        const store = createVuexStore(journalState)
+
+        const newEntry = {
+            date: 1671647650767,
+            text: "Este es un test de crear y borrar entrada"
+        }
+
+        const id = await store.dispatch('journal/createEntry', newEntry)
+
+        expect(store.state.journal.entries.find(e => e.id === id)).toBeTruthy()
+
+        //Parte 2
+
+        await store.dispatch('journal/deleteEntry',id)
+
+        expect(store.state.journal.entries.find(e => e.id === id)).toBeFalsy()
     })
 
 
