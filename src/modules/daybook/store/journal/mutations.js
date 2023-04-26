@@ -16,3 +16,7 @@ export const deleteEntry = (state, id) => {
     const idx = state.entries.map(e => e.id).indexOf(id)
     state.entries.splice(idx, 1)
 }
+
+export const clearEntries = (state) => {
+    state.entries = []
+}
