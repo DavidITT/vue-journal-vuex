@@ -7,8 +7,7 @@ import isAuthenticatedGuard from "@/modules/auth/router/auth-guard";
 const routes = [
     {
         path: '/',
-        name: 'home',
-        component: HomeView
+        ...authRouter
     },
     {
         path: '/about',
@@ -23,10 +22,7 @@ const routes = [
         beforeEnter: [isAuthenticatedGuard],
         ...daybookRouter
     },
-    {
-        path: '/auth',
-        ...authRouter
-    }
+
 ]
 
 const router = createRouter({
